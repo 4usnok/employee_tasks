@@ -43,6 +43,6 @@ class EmployeeListWithActiveTasks(generics.ListAPIView):
     def get_queryset(self):
         return (TaskTable.objects.filter(status=True) # фильтрация по активному статусу задач
          .values('owner') # группировка по владельцу
-         .annotate(total=Count('id')) # количество задач у каждого владельца
-         .order_by('-total') # сортировка
+         .annotate(total_owner=Count('id')) # количество задач у каждого владельца
+         .order_by('-total_owner') # сортировка
          )
