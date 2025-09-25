@@ -1,4 +1,4 @@
-from django.db.models import Count
+from django.db.models import Count, Max, Q
 from rest_framework import generics
 
 from employee_table.serializers import EmployeeTableSerializer
@@ -46,3 +46,36 @@ class EmployeeListWithActiveTasks(generics.ListAPIView):
          .annotate(total_owner=Count('id')) # количество задач у каждого владельца
          .order_by('-total_owner') # сортировка
          )
+
+class FindEmployee(generics.ListAPIView):
+    """
+    Реализует поиск по сотрудникам, которые могут взять такие задачи
+    (наименее загруженный сотрудник или сотрудник,
+    выполняющий родительскую задачу, если ему назначено максимум на 2 задачи больше,
+    чем у наименее загруженного сотрудника).
+    """
+    serializer_class = EmployeeTableSerializer
+
+    def get_queryset(self):
+        # Шаг 1. Определяем наименее загруженного сотрудника
+        employees_with_load = EmployeeTable.objects.annotate(
+            task_count=Count('task_table')
+        )
+        least_loaded = employees_with_load.order_by('task_count').first()
+
+        # Шаг 2. Определяем сотрудников выполняющего родительскую задачу
+        parent_employees = EmployeeTable.objects.filter(
+            task_table__parent_task__isnull=False
+        ).annotate(
+        task_count=Count('task_table')
+        ).distinct()
+
+        # Шаг 3. если сотруднику назначено максимум на 2 задачи больше, чем у наименее загруженного сотрудника
+        if least_loaded:
+            for parent_emp in parent_employees:
+                if parent_emp.task_count <= least_loaded.task_count + 2:
+                    return EmployeeTable.objects.filter(id=parent_emp.id)
+            # Если цикл завершился и не нашел подходящего - возвращаем наименее загруженного
+            return EmployeeTable.objects.filter(id=least_loaded.id)
+        else:
+            return EmployeeTable.objects.none()  # если вообще нет сотрудников

@@ -16,4 +16,4 @@ class EmployeeTable(models.Model):
         return self.full_name
 
     class Meta:
-        ordering = ['owner', 'full_name']
+        ordering = ['full_name']
