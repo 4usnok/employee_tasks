@@ -10,7 +10,7 @@ class TaskTableSerializer(serializers.ModelSerializer):
         fields = '__all__'  # Все поля модели
 
 class TaskWithEmployeeSerializer(serializers.ModelSerializer):
-    """Сериализатор для вывода списка объектов в формате: {Важная задача, Срок, \[ФИО сотрудника\]}"""
+    """Сериализатор для вывода списка объектов в формате: {Важная задача, Срок, [ФИО сотрудника]}"""
     employee_full_name = serializers.CharField(source='performer.full_name', read_only=True)
 
     class Meta:
