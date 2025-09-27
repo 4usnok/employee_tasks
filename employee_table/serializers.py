@@ -1,12 +1,10 @@
 from rest_framework import serializers
-from rest_framework.permissions import IsAuthenticated
 
 from employee_table.models import EmployeeTable
 
 
-class EmployeeTableSerializer(serializers.Serializer):
+class EmployeeTableSerializer(serializers.ModelSerializer):
     """Сериализатор для приложения `employee_table`"""
     class Meta:
         model = EmployeeTable
         fields = '__all__'  # Все поля модели
-        permission_classes = [IsAuthenticated] # права доступа

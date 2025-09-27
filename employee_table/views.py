@@ -79,3 +79,12 @@ class FindEmployee(generics.ListAPIView):
             return EmployeeTable.objects.filter(id=least_loaded.id)
         else:
             return EmployeeTable.objects.none()  # если вообще нет сотрудников
+
+# class ReturnImportantTasks(generics.ListAPIView):
+#     """Возвращает список объектов в формате: {Важная задача, Срок, \[ФИО сотрудника\]}"""
+#     def get_queryset(self):
+#         # Шаг 1. Используем метод get_queryset из FindEmployee и EmployeeListWithActiveTasks
+#         find_employee_data = FindEmployee().get_queryset()
+#         employee_list_data = EmployeeListWithActiveTasks().get_queryset()
+#         # Шаг 2.
+#         return
