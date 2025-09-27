@@ -10,6 +10,5 @@ urlpatterns = [
     path('tables/<int:pk>/destroy/', views.EmployeeTableDestroy.as_view(), name="tables-destroy"),
     path('tables/<int:pk>/update/', views.EmployeeTableUpdate.as_view(), name="tables-update"),
     path('tables/<int:pk>/', views.EmployeeTableRetrieve.as_view(), name="tables-detail"),
-    path('active_task', views.EmployeeListWithActiveTasks.as_view(), name="active-task"),
-    path('find-employee', views.FindEmployee.as_view(), name="find-employee"),
+    path('tables/find-employee/', views.FindEmployee.as_view(), name="find-employee"),
 ]
