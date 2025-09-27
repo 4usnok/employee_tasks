@@ -17,3 +17,4 @@ class EmployeeTable(models.Model):
 
     class Meta:
         ordering = ['full_name']
+

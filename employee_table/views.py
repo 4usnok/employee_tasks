@@ -1,9 +1,10 @@
-from django.db.models import Count, Max, Q
+from django.db.models import Count
 from rest_framework import generics
 
 from employee_table.serializers import EmployeeTableSerializer
 from employee_table.models import EmployeeTable
 from task_table.models import TaskTable
+from task_table.serializers import TaskWithEmployeeSerializer
 
 
 class EmployeeTableList(generics.ListAPIView):
@@ -54,7 +55,7 @@ class FindEmployee(generics.ListAPIView):
     выполняющий родительскую задачу, если ему назначено максимум на 2 задачи больше,
     чем у наименее загруженного сотрудника).
     """
-    serializer_class = EmployeeTableSerializer
+    serializer_class = TaskWithEmployeeSerializer
 
     def get_queryset(self):
         # Шаг 1. Определяем наименее загруженного сотрудника
@@ -74,8 +75,8 @@ class FindEmployee(generics.ListAPIView):
         if least_loaded:
             for parent_emp in parent_employees:
                 if parent_emp.task_count <= least_loaded.task_count + 2:
-                    return EmployeeTable.objects.filter(id=parent_emp.id)
+                    return TaskTable.objects.filter(performer=parent_emp)
             # Если цикл завершился и не нашел подходящего - возвращаем наименее загруженного
-            return EmployeeTable.objects.filter(id=least_loaded.id)
+            return TaskTable.objects.filter(performer=least_loaded)
         else:
-            return EmployeeTable.objects.none()  # если вообще нет сотрудников
+            return TaskTable.objects.none()  # если вообще нет сотрудников
