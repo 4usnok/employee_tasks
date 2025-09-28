@@ -22,12 +22,12 @@ urlpatterns = [
     path("task_table/", include("task_table.urls")),
     path("admin/", admin.site.urls),
     path(
-        "/api/swagger/",
+        "api/swagger/",
         schema_view.with_ui("swagger", cache_timeout=0),
         name="schema-swagger-ui",
     ),
     path(
-        "/api/redoc/",
+        "api/redoc/",
         schema_view.with_ui("redoc", cache_timeout=0),
         name="schema-redoc",
     ),
