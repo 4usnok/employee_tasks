@@ -1,7 +1,6 @@
 from rest_framework import serializers
 
 from employee_table.models import EmployeeTable
-from task_table.models import TaskTable
 
 
 class EmployeeTableSerializer(serializers.ModelSerializer):

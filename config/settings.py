@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     "employee_table",
     "task_table",
     "user",
-    "drf_yasg"
+    "drf_yasg",
 ]
 
 MIDDLEWARE = [
