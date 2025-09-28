@@ -6,7 +6,7 @@ from task_table.models import TaskTable
 
 class EmployeeTableSerializer(serializers.ModelSerializer):
     """Сериализатор для приложения `employee_table`"""
+
     class Meta:
         model = EmployeeTable
-        fields = '__all__'  # Все поля модели
-
+        fields = "__all__"  # Все поля модели

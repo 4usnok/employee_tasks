@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
+
 import os
 from pathlib import Path
 
@@ -42,12 +43,11 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_extensions",
-
     "rest_framework",
-
     "employee_table",
     "task_table",
     "user",
+    "drf_yasg"
 ]
 
 MIDDLEWARE = [
@@ -86,11 +86,11 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        'NAME': os.getenv("dbname"),
-        'USER': os.getenv("user"),
-        'PASSWORD': os.getenv("password_db"),
-        'HOST': os.getenv("host"),
-        'PORT': os.getenv("port"),
+        "NAME": os.getenv("dbname"),
+        "USER": os.getenv("user"),
+        "PASSWORD": os.getenv("password_db"),
+        "HOST": os.getenv("host"),
+        "PORT": os.getenv("port"),
     }
 }
 
@@ -117,9 +117,9 @@ AUTH_USER_MODEL = "user.User"
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'ru-ru'
+LANGUAGE_CODE = "ru-ru"
 
-TIME_ZONE = 'Europe/Moscow'
+TIME_ZONE = "Europe/Moscow"
 
 USE_I18N = True
 
