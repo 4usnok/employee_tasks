@@ -83,12 +83,14 @@ poetry env activate
 * Создание миграций: `python manage.py makemigrations`,
 * Сохранение миграций: `python manage.py migrate`,
 * Откат всех миграций: `python manage.py migrate name_migration`, где `name_migration` -> название миграции.
-* Создания файла с покрытием `.coverage`: `coverage run --source='.' manage.py test`
+* Создания файла с покрытием `.coverage`: `coverage html`
 * Посмотреть покрытие unit-тестами: `coverage report`
 * Запуск обработчика очереди (worker) для получения задач и их выполнения: `celery -A config worker -l INFO`
 * Запуск redis-server: `./redis-server.exe`
 * Запуск redis-cli: `./redis-cli.exe`
-* Собирает образы для всех сервисов в фоновом режиме, используя Dockerfile, определенный в конфигурации: `docker-compose up -d --build`
+* Сборка образа: `docker build -t my-django-employee-task .`
+* Запуск контейнера: `docker run -p 8000:8000 my-django-employee-task`
+* Просмотр контейнеров: `docker images`
 * Вывод логов контейнеризации: `docker-compose logs db`
 * Запускает все сервисы, определенные в файле: `docker-compose up`
 

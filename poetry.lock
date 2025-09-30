@@ -383,17 +383,6 @@ django = "*"
 typing-extensions = "*"
 
 [[package]]
-name = "django-test-without-migrations"
-version = "0.6"
-description = "Disable migrations when running your Django tests."
-optional = false
-python-versions = "*"
-groups = ["main"]
-files = [
-    {file = "django-test-without-migrations-0.6.tar.gz", hash = "sha256:28fbe94d23f314f524acea7ff23ef6f72ddb232492d6d0b39c25a97fc20be0fa"},
-]
-
-[[package]]
 name = "djangorestframework"
 version = "3.16.1"
 description = "Web APIs for Django, made easy."
@@ -1012,4 +1001,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.13"
-content-hash = "e5b34a44106962faea1ca905cb583958c1349c072795b109794ae053f36026c7"
+content-hash = "3ae56390082c93b47703d065ad58b20246e5f13a1a2ed18146dedd76f5edde51"
