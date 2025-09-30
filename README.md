@@ -96,6 +96,13 @@ poetry env activate
 
 ## Работа с программой
 1. Запуск сервера осуществляется командой: `python manage.py runserver`
+2. Ручное создание и запуск контейнера:
+docker run -d `
+--name my-django-employee-task `
+-p 8000:8000 `
+-v employee-task-media-volume:/empoyee-task/media `
+-e DEBAG=1 `
+my-django-employee-task
 
 ## Инструкции по настройке удаленного сервера и деплоя
 
