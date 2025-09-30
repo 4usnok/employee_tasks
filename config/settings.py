@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     "task_table",
     "user",
     "drf_yasg",
+    'test_without_migrations',
+
 ]
 
 MIDDLEWARE = [
