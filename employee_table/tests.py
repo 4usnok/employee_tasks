@@ -23,6 +23,12 @@ class TaskApiTestCase(APITestCase):
             name="Test", performer=self.employee_table, status=True, work=True
         )
 
+    def test_list_view_employee_table(self):
+        """Тестирование просмотра всех таблиц сотрудников"""
+        urls_list_view = reverse("employee_table:list-views")
+        response = self.client.get(urls_list_view)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
     def test_create_employee_table(self):
         """Тестирование создания таблицы сотрудников"""
         data_from_create = {
