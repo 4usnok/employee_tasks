@@ -19,7 +19,7 @@ poetry install
 ```
 3. Активировать окружение
 ```
-poetry shell
+poetry env activate
 ```
 # Содержание проекта
 ## Приложение `employee_table`

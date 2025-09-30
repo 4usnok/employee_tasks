@@ -1,8 +1,8 @@
 [project]
 name = "employee-tasks"
-version = "0.1.0"
+version = "2.2.1"
 description = ""
-authors = ["Nikolay Korkushko <kakashonochka12@gmail.com>"]
+authors = [{ name = "Nikolay Korkushko, email = <kakashonochka12@gmail.com>" }]
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
