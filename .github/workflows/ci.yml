@@ -99,9 +99,9 @@ jobs:
 
       - name: Deploy to server
         run: |
-          sh -o StructHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-          docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/employee-task:${{ github.sha }}
-          docker stop employee-task || true
-          docker rm employee-task || true
-          docker run -d --name employee-task -p 80:8000 $ {{ secrets.DOCKER_HUB_USERNAME }}/employee-task:${{ github.sha }}
-          EOF
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "
+          docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/employee-task:${{ github.sha }} &&
+          docker stop employee-task || true &&
+          docker rm employee-task || true &&
+          docker run -d --name employee-task -p 80:8000 ${{ secrets.DOCKER_HUB_USERNAME }}/employee-task:${{ github.sha }}
+          "
