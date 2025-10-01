@@ -60,6 +60,12 @@ jobs:
         run: poetry install --no-root
 
       - name: Run tests
+        env:
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.PASSWORD_DB }}
+          DB_HOST: localhost
+          DB_PORT: 5432
         run: poetry run python manage.py test
 
   build:
