@@ -64,8 +64,8 @@ jobs:
           NAME_DB: ${{ secrets.NAME_DB }}
           USER_DB: ${{ secrets.USER_DB }}
           PASSWORD_DB: ${{ secrets.PASSWORD_DB }}
-          DB_HOST: localhost
-          DB_PORT: 5432
+          HOST_DB: localhost
+          PORT_DB: 5432
         run: poetry run python manage.py test
 
   build:
