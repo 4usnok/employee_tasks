@@ -106,7 +106,7 @@ poetry env activate
 -p 8000:8000 `
 -v employee-task-media-volume:/empoyee-task/media `
 -e DEBAG=1 `
-my-django-employee-task`
+my-django-employee-task `
 
 ## Инструкции по настройке удаленного сервера и деплоя
 
@@ -188,7 +188,7 @@ username -> это никнейм ВМ
 Команда -> `git ls-tree -r origin/work-for-nikolay`, где ветка work-for-nikolay ветка разработчика
 `origin` -> это для удалённых веток, поэтому необходимо оставить
 4. Переключение на ветку:
-`git branch work-for-nikolay`
+`git checkout work-for-nikolay`
 
 Шаг 5. Запуск docker-compose или по другому -> деплой:
 `docker-compose up -d`
