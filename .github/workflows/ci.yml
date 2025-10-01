@@ -36,9 +36,9 @@ jobs:
       postgres:
         image: postgres:13
         env:
-          POSTGRES_USER: ${{ secrets.USER }}
+          POSTGRES_USER: ${{ secrets.USER_DB }}
           POSTGRES_PASSWORD: ${{ secrets.PASSWORD_DB }}
-          POSTGRES_DB: ${{ secrets.DBNAME }}
+          POSTGRES_DB: ${{ secrets.NAME_DB }}
         ports:
           - 5432:5432
 
@@ -61,8 +61,8 @@ jobs:
 
       - name: Run tests
         env:
-          DB_NAME: ${{ secrets.DBNAME }}
-          DB_USER: ${{ secrets.USER }}
+          DB_NAME: ${{ secrets.NAME_DB }}
+          DB_USER: ${{ secrets.USER_DB }}
           DB_PASSWORD: ${{ secrets.PASSWORD_DB }}
           DB_HOST: localhost
           DB_PORT: 5432
