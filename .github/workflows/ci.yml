@@ -36,6 +36,7 @@ jobs:
       postgres:
         image: postgres:14
         env:
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
           POSTGRES_USER: ${{ secrets.USER_DB }}
           POSTGRES_PASSWORD: ${{ secrets.PASSWORD_DB }}
           POSTGRES_DB: ${{ secrets.NAME_DB }}
@@ -61,6 +62,7 @@ jobs:
 
       - name: Run tests
         env:
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
           NAME_DB: ${{ secrets.NAME_DB }}
           USER_DB: ${{ secrets.USER_DB }}
           PASSWORD_DB: ${{ secrets.PASSWORD_DB }}
