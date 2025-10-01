@@ -36,9 +36,9 @@ jobs:
       postgres:
         image: postgres:13
         env:
-          POSTGRES_USER: ${{ secrets.user }}
-          POSTGRES_PASSWORD: ${{ secrets.password_db }}
-          POSTGRES_DB: ${{ secrets.dbname }}
+          POSTGRES_USER: ${{ secrets.USER }}
+          POSTGRES_PASSWORD: ${{ secrets.PASSWORD_DB }}
+          POSTGRES_DB: ${{ secrets.DBNAME }}
         ports:
           - 5432:5432
 
@@ -61,9 +61,9 @@ jobs:
 
       - name: Run tests
         env:
-          DB_NAME: ${{ secrets.dbname }}
-          DB_USER: ${{ secrets.user }}
-          DB_PASSWORD: ${{ secrets.password_db }}
+          DB_NAME: ${{ secrets.DBNAME }}
+          DB_USER: ${{ secrets.USER }}
+          DB_PASSWORD: ${{ secrets.PASSWORD_DB }}
           DB_HOST: localhost
           DB_PORT: 5432
         run: poetry run python manage.py test
