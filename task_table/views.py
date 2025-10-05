@@ -1,7 +1,8 @@
 from rest_framework import generics
 
 from task_table.models import TaskTable
-from task_table.serializers import TaskTableSerializer, TaskWithEmployeeSerializer
+from task_table.serializers import (TaskTableSerializer,
+                                    TaskWithEmployeeSerializer)
 
 
 class TaskList(generics.ListAPIView):

@@ -79,6 +79,8 @@ poetry env activate
 9. `.flake8` -> файл с настройками для линтера `flake8`
 10. `mypy.ini` -> файл с настройками для линтера `mypy`
 11. `htmlcov` -> директория с html-файлом покрытия тестами проекта
+12. `run_bot.py` -> модуль для запуска тг-бота
+13. `handlers` -> пакет с хэндлерами `employee_handlers.py` и `task_handlers.py`
 
 ## Работа с программой
 1. Запуск сервера осуществляется командой: `python manage.py runserver`
