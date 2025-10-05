@@ -80,24 +80,6 @@ poetry env activate
 10. `mypy.ini` -> файл с настройками для линтера `mypy`
 11. `htmlcov` -> директория с html-файлом покрытия тестами проекта
 
-# Полезные команды
-* Запуск виртуального окружения poetry: `poetry env activate`
-* Запуск сервера: `python manage.py runserver`,
-* Создание суперюзера(админка): `python manage.py createsuperuser`,
-* Создание миграций: `python manage.py makemigrations`,
-* Сохранение миграций: `python manage.py migrate`,
-* Откат всех миграций: `python manage.py migrate name_migration`, где `name_migration` -> название миграции.
-* Создания файла с покрытием `.coverage`: `coverage html`
-* Посмотреть покрытие unit-тестами: `coverage report`
-* Запуск обработчика очереди (worker) для получения задач и их выполнения: `celery -A config worker -l INFO`
-* Запуск redis-server: `./redis-server.exe`
-* Запуск redis-cli: `./redis-cli.exe`
-* Сборка образа: `docker build -t my-django-employee-task .`
-* Запуск контейнера: `docker run -p 8000:8000 my-django-employee-task`
-* Просмотр контейнеров: `docker images`
-* Вывод логов контейнеризации: `docker-compose logs db`
-* Запускает все сервисы, определенные в файле: `docker-compose up`
-
 ## Работа с программой
 1. Запуск сервера осуществляется командой: `python manage.py runserver`
 2. Ручное создание и запуск контейнера:
@@ -107,6 +89,7 @@ poetry env activate
 -v employee-task-media-volume:/empoyee-task/media `
 -e DEBAG=1 `
 my-django-employee-task `
+3. Запуск бота производится из корневой директории: `python bot.py`
 
 ## Инструкции по настройке удаленного сервера и деплоя
 
@@ -196,3 +179,21 @@ username -> это никнейм ВМ
 # Деплой по методу CI
 Деплой по методу CI осуществляется на гитхабе во вкладке Actions, настройки сервера и 
 контейнера находятся в директории: `/.github/workflows` в файле `ci.yml`
+
+# Полезные команды
+* Запуск виртуального окружения poetry: `poetry env activate`
+* Запуск сервера: `python manage.py runserver`,
+* Создание суперюзера(админка): `python manage.py createsuperuser`,
+* Создание миграций: `python manage.py makemigrations`,
+* Сохранение миграций: `python manage.py migrate`,
+* Откат всех миграций: `python manage.py migrate name_migration`, где `name_migration` -> название миграции.
+* Создания файла с покрытием `.coverage`: `coverage html`
+* Посмотреть покрытие unit-тестами: `coverage report`
+* Запуск обработчика очереди (worker) для получения задач и их выполнения: `celery -A config worker -l INFO`
+* Запуск redis-server: `./redis-server.exe`
+* Запуск redis-cli: `./redis-cli.exe`
+* Сборка образа: `docker build -t my-django-employee-task .`
+* Запуск контейнера: `docker run -p 8000:8000 my-django-employee-task`
+* Просмотр контейнеров: `docker images`
+* Вывод логов контейнеризации: `docker-compose logs db`
+* Запускает все сервисы, определенные в файле: `docker-compose up`
