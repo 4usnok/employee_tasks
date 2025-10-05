@@ -1,8 +1,7 @@
 import logging
-import os
 
 import aiohttp
-from aiogram import Bot, Router, types
+from aiogram import Router, types
 from dotenv import load_dotenv
 
 load_dotenv()

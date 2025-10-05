@@ -1,5 +1,6 @@
 [run]
 omit =
+    run_bot.py
     */migrations/*
     */tests/*
     config/asgi.py
