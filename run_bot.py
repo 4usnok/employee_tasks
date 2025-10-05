@@ -39,7 +39,7 @@ async def cmd_start(message: types.Message):
     await message.answer("Какую функцию хотите выбрать ?", reply_markup=keyboard)
 
 
-# Запуск процесса поллинга новых апдейтов
+# Запускаем всё
 async def main():
     await dp.start_polling(bot)
 
