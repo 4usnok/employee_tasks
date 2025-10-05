@@ -72,7 +72,7 @@ jobs:
         run: poetry run python manage.py test
 
       - name: Run Bot tests
-        run: poetry run python -m unittest discover tests/bot_tests/ -v
+        run: poetry run python -m unittest discover -s tests -p "test_*.py" -v
 
   build:
     needs: test
