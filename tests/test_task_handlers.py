@@ -1,8 +1,9 @@
 import unittest
 from unittest.mock import AsyncMock, patch
+
 from aiogram.types import Message
 
-from handlers.task_handlers import view_tasks_list, view_spec_endpoint_tasks
+from handlers.task_handlers import view_spec_endpoint_tasks, view_tasks_list
 
 
 class TestTaskHandlers(unittest.TestCase):
@@ -16,7 +17,7 @@ class TestTaskHandlers(unittest.TestCase):
         self.message.answer = AsyncMock()
 
         # Создаем патчер для aiohttp
-        self.mock_get_patcher = patch('aiohttp.ClientSession.get')
+        self.mock_get_patcher = patch("aiohttp.ClientSession.get")
         self.mock_get = self.mock_get_patcher.start()
 
         # Настраиваем стандартный успешный ответ
@@ -37,14 +38,14 @@ class TestTaskHandlers(unittest.TestCase):
                     "name": "Тестовая задача 1",
                     "employee_full_name": "Иван Иванов",
                     "term": 5,
-                    "status": True
+                    "status": True,
                 },
                 {
                     "name": "Тестовая задача 2",
                     "employee_full_name": "Петр Петров",
                     "term": None,
-                    "status": False
-                }
+                    "status": False,
+                },
             ]
 
             await view_tasks_list(self.message)
@@ -57,6 +58,7 @@ class TestTaskHandlers(unittest.TestCase):
 
         # Запускаем асинхронный тест
         import asyncio
+
         asyncio.run(run_test())
 
 
@@ -68,7 +70,7 @@ class TestSpecEndpointTasks(unittest.TestCase):
         self.message.text = "Список блокирующих задач"
         self.message.answer = AsyncMock()
 
-        self.mock_get_patcher = patch('aiohttp.ClientSession.get')
+        self.mock_get_patcher = patch("aiohttp.ClientSession.get")
         self.mock_get = self.mock_get_patcher.start()
 
         self.mock_response = AsyncMock()
@@ -87,7 +89,7 @@ class TestSpecEndpointTasks(unittest.TestCase):
                     "name": "Блокирующая задача",
                     "employee_full_name": "Василий Блокирующий",
                     "term": 7,
-                    "status": False
+                    "status": False,
                 }
             ]
 
@@ -99,8 +101,9 @@ class TestSpecEndpointTasks(unittest.TestCase):
             self.assertIn("Блокирующая задача", call_args)
 
         import asyncio
+
         asyncio.run(run_test())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -1,9 +1,10 @@
 import unittest
 from unittest.mock import AsyncMock, patch
+
 from aiogram.types import Message
 
-from handlers.employee_handlers import view_employees_list, view_spec_endpoint_employee
-from handlers.task_handlers import view_spec_endpoint_tasks
+from handlers.employee_handlers import (view_employees_list,
+                                        view_spec_endpoint_employee)
 
 
 class TestTaskHandlers(unittest.TestCase):
@@ -17,7 +18,7 @@ class TestTaskHandlers(unittest.TestCase):
         self.message.answer = AsyncMock()
 
         # Создаем патчер для aiohttp
-        self.mock_get_patcher = patch('aiohttp.ClientSession.get')
+        self.mock_get_patcher = patch("aiohttp.ClientSession.get")
         self.mock_get = self.mock_get_patcher.start()
 
         # Настраиваем стандартный успешный ответ
@@ -41,7 +42,7 @@ class TestTaskHandlers(unittest.TestCase):
                 {
                     "full_name": "test2",
                     "job_title": "test2",
-                }
+                },
             ]
 
             await view_employees_list(self.message)
@@ -54,7 +55,9 @@ class TestTaskHandlers(unittest.TestCase):
 
         # Запускаем асинхронный тест
         import asyncio
+
         asyncio.run(run_test())
+
 
 class TestSpecEndpointEmployee(unittest.TestCase):
     """Тесты для спец endpoint'а блокирующих задач"""
@@ -64,7 +67,7 @@ class TestSpecEndpointEmployee(unittest.TestCase):
         self.message.text = "Список приоритетных сотрудников"
         self.message.answer = AsyncMock()
 
-        self.mock_get_patcher = patch('aiohttp.ClientSession.get')
+        self.mock_get_patcher = patch("aiohttp.ClientSession.get")
         self.mock_get = self.mock_get_patcher.start()
 
         self.mock_response = AsyncMock()
@@ -93,7 +96,9 @@ class TestSpecEndpointEmployee(unittest.TestCase):
             self.assertIn("test", call_args)
 
         import asyncio
+
         asyncio.run(run_test())
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
