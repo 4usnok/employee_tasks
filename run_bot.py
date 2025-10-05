@@ -26,10 +26,13 @@ dp.include_router(task_router)
 async def cmd_start(message: types.Message):
     await message.answer("" "Добро пожаловать в чат-бот трекера задач сотрудника.")
     kb = [
-        [types.KeyboardButton(text="Список задач сотрудников")],
-        [types.KeyboardButton(text="Список сотрудников")],
-        [types.KeyboardButton(text="Список приоритетных сотрудников")],
-        [types.KeyboardButton(text="Список блокирующих задач")],
+        [types.KeyboardButton(text="Список задач сотрудников"),
+         types.KeyboardButton(text="Список блокирующих задач")
+        ],
+        [
+            types.KeyboardButton(text="Список сотрудников"),
+            types.KeyboardButton(text="Список приоритетных сотрудников")
+        ]
     ]
     keyboard = types.ReplyKeyboardMarkup(
         keyboard=kb,
