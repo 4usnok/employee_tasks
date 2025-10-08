@@ -24,6 +24,7 @@ class TaskWithEmployeeSerializer(serializers.ModelSerializer):
         # "ФИО сотрудника" - берем из связанной модели через performer
         model = TaskTable
         fields = [
+            "status",
             "name",
             "term",
             "employee_full_name",

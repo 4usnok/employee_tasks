@@ -1,14 +1,15 @@
 from rest_framework import generics
 
 from task_table.models import TaskTable
-from task_table.serializers import TaskTableSerializer
+from task_table.serializers import (TaskTableSerializer,
+                                    TaskWithEmployeeSerializer)
 
 
 class TaskList(generics.ListAPIView):
     """Просмотр списка таблиц задач"""
 
     queryset = TaskTable.objects.all()
-    serializer_class = TaskTableSerializer
+    serializer_class = TaskWithEmployeeSerializer
 
 
 class TaskTableCreate(generics.ListCreateAPIView):

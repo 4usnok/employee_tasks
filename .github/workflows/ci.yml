@@ -68,7 +68,11 @@ jobs:
           PASSWORD_DB: ${{ secrets.PASSWORD_DB }}
           HOST_DB: localhost
           PORT_DB: 5432
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
         run: poetry run python manage.py test
+
+      - name: Run Bot tests
+        run: poetry run python -m unittest discover -s tests -p "test_*.py" -v
 
   build:
     needs: test
@@ -103,5 +107,9 @@ jobs:
           docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/employee-task:${{ github.sha }} &&
           docker stop employee-task || true &&
           docker rm employee-task || true &&
-          docker run -d --name employee-task -p 80:8000 ${{ secrets.DOCKER_HUB_USERNAME }}/employee-task:${{ github.sha }}
+          docker run -d --name employee-task -p 80:8000 \
+          -e BOT_TOKEN=${{ secrets.BOT_TOKEN }} \
+          -e API_URL=http://localhost:8000 \
+          ${{ secrets.DOCKER_HUB_USERNAME }}/employee-task:${{ github.sha }} \
+          /bin/bash -c 'python manage.py runserver 0.0.0.0:8000 & python run_bot.py'
           "
