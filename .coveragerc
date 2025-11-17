@@ -1,0 +1,18 @@
+[run]
+omit =
+    run_bot.py
+    */migrations/*
+    */tests/*
+    config/asgi.py
+    config/wsgi.py
+    manage.py
+    */__pycache__/*
+    */admin.py
+
+[report]
+exclude_lines =
+    pragma: no cover
+    def __str__
+    def __repr__
+    raise AssertionError
+    raise NotImplementedError
