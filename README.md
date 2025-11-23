@@ -97,7 +97,7 @@ poetry env activate
 -v employee-task-media-volume:/empoyee-task/media `
 -e DEBAG=1 `
 my-django-employee-task `
-3. Запуск бота производится из корневой директории: `python bot.py`
+3. Запуск бота производится из корневой директории: `python run_bot.py`
 
 ## Инструкции по настройке удаленного сервера и деплоя
 
